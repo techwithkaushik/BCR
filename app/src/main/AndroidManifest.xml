@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- This system app permission is required to capture the call audio stream -->
     <uses-permission
         android:name="android.permission.CAPTURE_AUDIO_OUTPUT"
@@ -29,16 +28,24 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BCR"
-        android:localeConfig="@xml/locales_config"
         tools:ignore="UnusedAttribute">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".NotificationActionService"
             android:exported="false" />
-
         <service
             android:name=".RecorderInCallService"
             android:enabled="true"
@@ -49,7 +56,6 @@
                 <action android:name="android.telecom.InCallService" />
             </intent-filter>
         </service>
-
         <service
             android:name=".RecorderTileService"
             android:enabled="true"
@@ -57,33 +63,27 @@
             android:icon="@drawable/ic_launcher_quick_settings"
             android:label="@string/quick_settings_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-        <meta-data
-            android:name="android.service.quicksettings.TOGGLEABLE_TILE"
-            android:value="true" />
+            <meta-data
+                android:name="android.service.quicksettings.TOGGLEABLE_TILE"
+                android:value="true" />
+
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
         <provider
-            android:authorities="@string/provider_authority"
             android:name=".RecorderProvider"
+            android:authorities="@string/provider_authority"
             android:exported="false"
-            android:grantUriPermissions="true">
-        </provider>
+            android:grantUriPermissions="true"></provider>
 
         <activity
             android:name=".settings.SettingsActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="true"></activity>
         <activity
             android:name=".rule.RecordRulesActivity"
             android:exported="false" />
     </application>
+
 </manifest>
