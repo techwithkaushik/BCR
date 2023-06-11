@@ -105,7 +105,7 @@ class Preferences(private val context: Context) {
      * Get the default output directory. The directory should always be writable and is suitable for
      * use as a fallback.
      */
-    val defaultOutputDir: File = context.getExternalFilesDir(null)!!
+    val defaultOutputDir: File = context.getFilesDir()!!
 
     /**
      * The user-specified output directory.
