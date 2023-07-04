@@ -33,7 +33,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BCR"
         android:localeConfig="@xml/locales_config"
+        android:manageSpaceActivity=".MainActivity"
         tools:ignore="UnusedAttribute">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <service
             android:name=".NotificationActionService"
@@ -75,11 +86,6 @@
         <activity
             android:name=".settings.SettingsActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity
